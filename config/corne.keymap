@@ -64,7 +64,7 @@
 
         number_settings_layer {
             bindings = <
-                &none       &kp N6       &kp N7       &kp N8       &kp N9       &kp N0              &kp F1   &kp F2   &kp F3 &kp F4     &kp F5   &F6 
+                &none       &kp N6       &kp N7       &kp N8       &kp N9       &kp N0              &kp F1   &kp F2   &kp F3 &kp F4     &kp F5   &kp F6 
                 &td_boot    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5              &kp LEFT &kp DOWN &kp UP &kp RIGHT  &none    &td_boot
                 &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4        &kp F7   &kp F8   &kp F9 &kp F10    &kp F11  &kp F12
                                                                 &trans  &trans  &trans              &trans   &trans   &trans
