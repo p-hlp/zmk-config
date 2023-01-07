@@ -32,7 +32,7 @@
                 &mt LALT TAB    &kp Q   &kp W   &kp E   &kp R &kp T         &kp Y   &kp U   &kp I       &kp O   &kp P       &kp MINUS
                 &kp LCTRL       &kp A   &kp S   &kp D   &kp F &kp G         &kp H   &kp J   &kp K       &kp L   &kp SEMI    &kp SQT
                 &kp ESC         &kp Z   &kp X   &kp C   &kp V &kp B         &kp N   &kp M   &kp COMMA   &kp DOT &kp FSLH    &kp RSHFT 
-                                &mo_mt0   &lt L_SYM SPACE &mt LC DEL        &mt LS BSPC &lt L_SYM RET   &mo_mt0
+                                &mo L_SET  &lt L_SYM SPACE &mt LC DEL       &mt LS BSPC &lt L_SYM RET   &mo L_SET
                 >;
         };
 
@@ -41,7 +41,7 @@
                 &mt LALT TAB    &kp Q   &kp W   &kp E   &kp R &kp T         &kp Y   &kp U   &kp I       &kp O   &kp P       &kp MINUS
                 &kp LCTRL       &kp A   &kp S   &kp D   &kp F &kp G         &kp H   &kp J   &kp K       &kp L   &kp SEMI    &kp SQT
                 &kp ESC         &kp Z   &kp X   &kp C   &kp V &kp B         &kp N   &kp M   &kp COMMA   &kp DOT &kp FSLH    &kp RSHFT 
-                                &mo_mt0   &lt L_SYM SPACE &mt LG DEL        &mt LS BSPC &lt L_SYM RET   &mo_mt0
+                                &mo L_SET   &lt L_SYM SPACE &mt LG DEL      &mt LS BSPC &lt L_SYM RET   &mo L_SET
                 >;
         };
 
