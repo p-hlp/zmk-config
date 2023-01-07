@@ -8,51 +8,63 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+#define L_DFLT_WIN 0
+#define L_DFLT_MAC 1
+#define L_SYM 2
+#define L_SET 3
+
+
 / {
-        keymap {
-                compatible = "zmk,keymap";
-
-                default_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
-                        >;
-                };
-                lower_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-//|BOOTLDR|     |     |     |     |     |   |     |     |     |     |     |BOOTLDR|
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp TAB    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &bootloader  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans  &trans &bootloader
-                          	        &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
-                        >;
-                };
-
-                raise_layer {
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |BOOTLDR|
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-   &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &bootloader
-                    	     &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
-                        >;
-                };
+    behaviors {
+        mo_mt0: mom_layer_mod_tap0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "MOMENTARY_LAYER_MOD_TAP0";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo L_SET>, <&to L_DFLT_MAC>;
         };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+        default_layer {
+            bindings = <
+                &mt LALT TAB    &kp Q   &kp W   &kp E   &kp R &kp T         &kp Y   &kp U   &kp I       &kp O   &kp P       &kp MINUS
+                &kp LCTRL       &kp A   &kp S   &kp D   &kp F &kp G         &kp H   &kp J   &kp K       &kp L   &kp SEMI    &kp SQT
+                &kp ESC         &kp Z   &kp X   &kp C   &kp V &kp B         &kp N   &kp M   &kp COMMA   &kp DOT &kp FSLH    &kp RSHFT 
+                                &mo_mt0   &lt L_SYM SPACE &mt LC DEL        &mt LS BSPC &lt L_SYM RET   &mo_mt0
+                >;
+        };
+
+        DefaultMAC {
+            bindings = <
+                &mt LALT TAB    &kp Q   &kp W   &kp E   &kp R &kp T         &kp Y   &kp U   &kp I       &kp O   &kp P       &kp MINUS
+                &kp LCTRL       &kp A   &kp S   &kp D   &kp F &kp G         &kp H   &kp J   &kp K       &kp L   &kp SEMI    &kp SQT
+                &kp ESC         &kp Z   &kp X   &kp C   &kp V &kp B         &kp N   &kp M   &kp COMMA   &kp DOT &kp FSLH    &kp RSHFT 
+                                &mo_mt0   &lt L_SYM SPACE &mt LG DEL        &mt LS BSPC &lt L_SYM RET   &mo_mt0
+                >;
+        };
+
+        Symbol {
+            bindings = <
+                &trans  &kp SQT     &kp LT      &kp GT      &kp DQT     &kp COMMA       &kp AMPS    &kp SEMI    &kp LBKT    &kp RBKT    &kp PRCNT   &none
+                &trans  &kp EXCL    &kp MINUS   &kp PLUS    &kp EQUAL   &kp DOT         &kp PIPE    &kp COLON   &kp LPAR    &kp RPAR    &kp QMARK   &none
+                &trans  &kp CARET   &kp SLASH   &kp ASTRK   &kp BSLH    &kp HASH        &kp TILDE   &kp DOLLAR  &kp LBRC    &kp RBRC    &kp AT    &none
+                                                &trans      &trans      &trans          &trans      &trans      &trans
+            >;
+        };
+
+        NumberAndSettings {
+            bindings = <
+                &bootloader &kp N1       &kp N2       &kp N3       &kp N4       &kp N5              &kp N6   &kp N7   &kp N8 &kp N9    &kp N0   &bootloader 
+                &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4        &kp LEFT &kp DOWN &kp UP &kp RIGHT &none    &none
+                &kp F1      &kp F2       &kp F3       &kp F4       &kp F5       &kp F6              &kp F7   &kp F8   &kp F9 &kp F10  &kp F11   &kp F12
+                                                                &trans  &trans  &trans              &trans   &trans   &trans
+            >;
+        };
+
+
+    };
 };
 
 &nice_view_spi {
