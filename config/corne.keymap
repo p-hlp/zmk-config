@@ -24,6 +24,14 @@
             bindings = <&mo L_SET>, <&to L_DFLT_MAC>;
         };
 
+        mo_mt1: mom_layer_mod_tap1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "MOMENTARY_LAYER_MOD_TAP1";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&mo L_SET>, <&to L_DFLT_WIN>;
+        };
+
         td_boot: tap_dance_bootloader {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_BOOTLOADER";
